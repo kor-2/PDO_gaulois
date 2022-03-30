@@ -12,6 +12,8 @@ $ctrlform = new FormController();
 
 if (isset($_GET["action"])) {
     switch ($_GET["action"]) {
+
+        case '0': $ctrlGaulois->listGaulois();break;
         case '1': $ctrlGaulois->requete1();break;
         case '2': $ctrlGaulois->requete2();break;
         case '3': $ctrlGaulois->requete3();break;
@@ -27,11 +29,10 @@ if (isset($_GET["action"])) {
         case '13': $ctrlGaulois->requete13();break;
         case '14': $ctrlGaulois->requete14();break;
         case '15': $ctrlGaulois->requete15();break;
+        case 'lieu': $ctrlform->showFormLieu();;break;
+        case 'specialite': $ctrlform->showFormSpe();;break;
         
     }
 }else {
-    
-    $ctrlform->ajoutLieu($_POST['addLieu']);
     $ctrlGaulois->listGaulois();
 }
-

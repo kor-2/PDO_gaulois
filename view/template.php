@@ -17,9 +17,20 @@ $form = new FormController();
         <main>
             <div id="contenu">
                 <h1>PDO Gaulois</h1>
+                <a href="/PDO_GAULOIS">Menu</a>
                 <form method="get">
                     <h2>Exe requête SQL(de 1 a 15)</h2>
-                    <input type="number" name="action" min="1" max="15">
+                    <select name="action">
+                        <?php
+                        for ($i=0; $i < 16; $i++) { 
+                            ?>
+                            <option value="<?= $i ?>"><?= $i ?></option>
+                        <?php
+                        }
+                        ?>
+                        <option value="specialite">Spécialité</option>
+                        <option value="lieu">Lieu</option>
+                    </select>
                     <input type="submit">
                 </form>
                 
