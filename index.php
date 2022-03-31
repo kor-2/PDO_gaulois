@@ -47,6 +47,26 @@ if (isset($_GET['action'])) {
             //$ctrlform->addPerso();
 
             break;
+        case 'ingredient':
+            $ctrlform->showFormIngre();
+            $ctrlform->addIngre();
+
+            break;
+        case 'bataille':
+            $ctrlform->showFormBataille();
+            $ctrlform->addBataille();
+
+            break;
+        case 'typeCasque':
+            $ctrlform->showFormTypeCasque();
+            $ctrlform->addTypeCasque();
+
+            break;
+        case 'casque':
+            $ctrlform->showFormCasque();
+            $ctrlform->addCasque();
+
+            break;
     }
 } else {
     $ctrlGaulois->listGaulois();

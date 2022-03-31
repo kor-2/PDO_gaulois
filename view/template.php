@@ -33,6 +33,10 @@ $form = new FormController();
                         <option value="specialite">Spécialité</option>
                         <option value="personnage">Personnage</option>
                         <option value="potion">Potion</option>
+                        <option value="ingredient">Ingrédient</option>
+                        <option value="bataille">Bataille</option>
+                        <option value="typeCasque">Type de casque</option>
+                        <option value="casque">Casque</option>
                     </select>
                     <input type="submit">
                 </form>
