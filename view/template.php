@@ -1,5 +1,6 @@
 <?php
 use Controller\FormController;
+
 $form = new FormController();
 ?>
 <!DOCTYPE html>
@@ -9,7 +10,7 @@ $form = new FormController();
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="public/css/style.css">
-    <title><?= $titre ?></title>
+    <title><?= $titre; ?></title>
 </head>
 <body>
     
@@ -22,20 +23,22 @@ $form = new FormController();
                     <h2>Exe requête SQL(de 1 a 15)</h2>
                     <select name="action">
                         <?php
-                        for ($i=0; $i < 16; $i++) { 
+                        for ($i = 0; $i < 16; ++$i) {
                             ?>
-                            <option value="<?= $i ?>"><?= $i ?></option>
+                            <option value="<?= $i; ?>"><?= $i; ?></option>
                         <?php
                         }
                         ?>
-                        <option value="specialite">Spécialité</option>
                         <option value="lieu">Lieu</option>
+                        <option value="specialite">Spécialité</option>
+                        <option value="personnage">Personnage</option>
+                        <option value="potion">Potion</option>
                     </select>
                     <input type="submit">
                 </form>
                 
-                <h2><?= $titre_secondaire ?></h2>
-                <?= $contenu ?>
+                <h2><?= $titre_secondaire; ?></h2>
+                <?= $contenu; ?>
             </div>
         </main>
     </div>

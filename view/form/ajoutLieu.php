@@ -8,11 +8,12 @@
 
 
 
+
 <?php
 
-$titre = "Ajout Lieu";
-$titre_secondaire= $titre;
+$titre = 'Ajout Lieu';
+$titre_secondaire = $titre;
 $contenu = ob_get_clean();
-require "view/template.php";
+require 'view/template.php';
 
 ?>

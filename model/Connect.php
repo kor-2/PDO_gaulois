@@ -1,16 +1,19 @@
 <?php
+
 namespace Model;
 
-abstract class Connect{
-    const HOST = "localhost";
-    const DB ="gaulois-corentin";
-    const USER = "root";
-    const PASS = "";
+abstract class Connect
+{
+    const HOST = 'localhost';
+    const DB = 'gaulois';
+    const USER = 'root';
+    const PASS = '';
 
-    public static function  seConnecter(){
+    public static function seConnecter()
+    {
         try {
             return new \PDO(
-                "mysql:host=".self::HOST.";dbname=".self::DB.";charset=utf8",self::USER, self::PASS);
+                'mysql:host='.self::HOST.';dbname='.self::DB.';charset=utf8', self::USER, self::PASS);
         } catch (\PDOException $ex) {
             return $ex->getMessage();
         }
