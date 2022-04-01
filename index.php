@@ -88,6 +88,10 @@ if (isset($_GET['action'])) {
             $ctrlGaulois->showAllGaulois();
 
             break;
+        case 'allCasque':
+            $ctrlGaulois->showAllCasque();
+
+            break;
     }
 } else {
     $ctrlGaulois->listGaulois();

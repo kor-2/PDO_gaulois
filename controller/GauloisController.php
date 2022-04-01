@@ -81,8 +81,6 @@ class GauloisController{
      */
 
     public function showAllGaulois(){
-
-
     
         $pdo = Connect::seConnecter();
         $alls = $pdo->prepare('
@@ -95,7 +93,25 @@ class GauloisController{
         require "view/queries/allPerso.php";
     }
 
+    /**
+     * Liste des casques
+     */
 
+    public function showAllCasque(){
+    
+        $pdo = Connect::seConnecter();
+        $alls = $pdo->prepare('
+        SELECT c.nom_casque , c.cout_casque, tp.id_type_casque, tp.nom_type_casque
+        FROM casque c
+        RIGHT JOIN type_casque tp ON c.id_type_casque = tp.id_type_casque
+        ');
+        $alls->execute();
+        require "view/queries/allCasque.php";
+    }
+
+    /**
+     * Requete SQL de Gaulois SQL
+     */
 
 
     public function requete1(){

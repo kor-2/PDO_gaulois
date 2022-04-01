@@ -20,6 +20,7 @@ $form = new FormController();
                 <h1>PDO Gaulois</h1>
                 <a href="/PDO_GAULOIS">Menu</a>
                 <a href="?action=allPerso">Personnage</a>
+                <a href="?action=allCasque">Casque</a>
                 <form method="get">
                     <h2>Exe requête SQL(de 1 a 15)</h2>
                     <select name="action">
