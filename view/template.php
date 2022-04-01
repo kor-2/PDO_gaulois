@@ -19,6 +19,7 @@ $form = new FormController();
             <div id="contenu">
                 <h1>PDO Gaulois</h1>
                 <a href="/PDO_GAULOIS">Menu</a>
+                <a href="?action=allPerso">Personnage</a>
                 <form method="get">
                     <h2>Exe requête SQL(de 1 a 15)</h2>
                     <select name="action">
@@ -37,6 +38,7 @@ $form = new FormController();
                         <option value="bataille">Bataille</option>
                         <option value="typeCasque">Type de casque</option>
                         <option value="casque">Casque</option>
+                        <option value="boire">Boire</option>
                     </select>
                     <input type="submit">
                 </form>

@@ -16,6 +16,88 @@ class GauloisController{
         ");
         require "view/queries/gaulois.php";
     }
+
+    /**
+     * Details gaulois
+     */
+
+    public function showGaulois(){
+
+    $perso = filter_input(INPUT_GET, 'perso', FILTER_VALIDATE_INT);
+
+    if ($perso) {
+        $pdo = Connect::seConnecter();
+        $details = $pdo->prepare('
+        SELECT p.id_personnage, p.nom_personnage , p.adresse_personnage , p.image_personnage ,l.id_lieu, l.nom_lieu ,s.id_specialite, s.nom_specialite
+        FROM personnage p 
+        RIGHT JOIN lieu l ON p.id_lieu = l.id_lieu
+        RIGHT JOIN specialite s ON p.id_specialite = s.id_specialite
+        WHERE p.id_personnage = :perso
+        ');
+        $details->execute(['perso' => $perso]);
+        require "view/queries/detailGaulois.php";
+    }
+
+    }
+    /**
+     * liste des personnage d'un lieu
+     */
+
+     public function showListLieu(){
+
+        $lieu = filter_input(INPUT_GET, 'lieu', FILTER_VALIDATE_INT);
+
+        $pdo = Connect::seConnecter();
+        $listLieu = $pdo->prepare('
+        SELECT p.id_personnage, p.nom_personnage ,  l.nom_lieu 
+        FROM personnage p 
+        RIGHT JOIN lieu l ON p.id_lieu = l.id_lieu
+        WHERE l.id_lieu = :lieu
+        ');
+        $listLieu->execute(['lieu' => $lieu]);
+        require "view/queries/listLieu.php";
+     }
+    /**
+     * liste des personnages d'une specialite
+     */
+
+     public function showListSpe(){
+
+        $spe = filter_input(INPUT_GET, 'spe', FILTER_VALIDATE_INT);
+
+        $pdo = Connect::seConnecter();
+        $listSpe = $pdo->prepare('
+        SELECT p.id_personnage, p.nom_personnage ,  s.nom_specialite
+        FROM personnage p 
+        RIGHT JOIN specialite s ON p.id_specialite = s.id_specialite
+        WHERE s.id_specialite = :spe
+        ');
+        $listSpe->execute(['spe' => $spe]);
+        require "view/queries/listSpe.php";
+     }
+
+    /**
+     * liste des personnages
+     */
+
+    public function showAllGaulois(){
+
+
+    
+        $pdo = Connect::seConnecter();
+        $alls = $pdo->prepare('
+        SELECT p.id_personnage, p.nom_personnage , p.adresse_personnage , p.image_personnage ,l.id_lieu, l.nom_lieu ,s.id_specialite, s.nom_specialite
+        FROM personnage p 
+        RIGHT JOIN lieu l ON p.id_lieu = l.id_lieu
+        RIGHT JOIN specialite s ON p.id_specialite = s.id_specialite
+        ');
+        $alls->execute();
+        require "view/queries/allPerso.php";
+    }
+
+
+
+
     public function requete1(){
         $pdo = Connect::seConnecter();
         $requete = $pdo->query("

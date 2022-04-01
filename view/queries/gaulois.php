@@ -11,10 +11,10 @@
     </thead>
     <tbody>
         <?php
-            foreach ($requete as $lieu) { ?>
+            foreach ($requete as $perso) { ?>
                 <tr>
-                    <td><?= $lieu['nom_personnage']; ?></td>
-                    <td><?= $lieu['id_personnage']; ?></td>
+                    <td><a href="?action=detail&perso=<?= $perso['id_personnage']; ?>"><?= $perso['nom_personnage']; ?></a></td>
+                    <td><?= $perso['id_personnage']; ?></td>
                 </tr>
 
         <?php

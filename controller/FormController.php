@@ -114,23 +114,6 @@ class FormController
         }
     }
 
-    public function showFormPotion()
-    {
-        $nbIngre = filter_input(INPUT_GET, 'nbIngre', FILTER_VALIDATE_INT);
-        if ($nbIngre) {
-            $nbIngre = $_GET['nbIngre'];
-        } else {
-            $nbIngre = 1;
-        }
-
-        $pdo = Connect::seConnecter();
-        $ingred = $pdo->prepare('SELECT id_ingredient , nom_ingredient FROM ingredient');
-        $ingred->execute();
-        $spec = $pdo->prepare('SELECT * FROM specialite');
-        $spec->execute();
-        require 'view/form/ajoutPotion.php';
-    }
-
     public function showFormTypeCasque()
     {
         return require 'view/form/ajoutTypeCasque.php';
@@ -172,5 +155,50 @@ class FormController
             ');
             $batai->execute(['nom' => $nom, 'cout' => $cout, 'lieu' => $lieu]);
         }
+    }
+    public function showFormPotion()
+    {
+        require 'view/form/ajoutPotion.php';
+    }
+
+    public function addPotion(){
+
+        $nom_potion = filter_input(INPUT_POST, 'potion', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+
+        if ($nom_potion) {
+            $pdo = Connect::seConnecter();
+            $pot = $pdo->prepare('INSERT INTO potion (nom_potion)  VALUES (:nom) ');
+            $pot->execute(['nom'=> $nom_potion]);
+        }
+    }
+
+    public function showFormBoire(){
+
+        $pdo = Connect::seConnecter();
+        $potions = $pdo->query('SELECT * FROM potion');
+        $persos = $pdo->query('SELECT * FROM personnage');
+
+        require 'view/form/ajoutBoire.php';
+    }
+    public function addBoire(){
+
+        $potion = filter_input(INPUT_POST, 'potion', FILTER_VALIDATE_INT);
+        $perso = filter_input(INPUT_POST, 'perso', FILTER_VALIDATE_INT);
+        $date = filter_input(INPUT_POST, 'date', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+        $dose = filter_input(INPUT_POST, 'dose',FILTER_VALIDATE_INT);
+
+        if ($potion && $perso && $date && $dose) {
+            $pdo = Connect::seConnecter();
+            $pot = $pdo->prepare('
+            INSERT INTO boire (id_potion, id_personnage, date_boire, dose_boire)  
+            VALUES (:potion , :perso, :date, :dose) ');
+            $pot->execute([
+                'potion'=> $potion,
+                'perso'=> $perso,
+                'date'=> $date,
+                'dose'=> $dose
+            ]);
+        }
+
     }
 }

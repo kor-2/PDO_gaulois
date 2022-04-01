@@ -44,7 +44,7 @@ if (isset($_GET['action'])) {
             break;
         case 'potion':
             $ctrlform->showFormPotion();
-            //$ctrlform->addPerso();
+            $ctrlform->addPotion();
 
             break;
         case 'ingredient':
@@ -65,6 +65,27 @@ if (isset($_GET['action'])) {
         case 'casque':
             $ctrlform->showFormCasque();
             $ctrlform->addCasque();
+
+            break;
+        case 'boire':
+            $ctrlform->showFormBoire();
+            $ctrlform->addBoire();
+
+            break;
+        case 'detail':
+            $ctrlGaulois->showGaulois();
+
+            break;
+        case 'list_lieu':
+            $ctrlGaulois->showListLieu();
+
+            break;
+        case 'list_spe':
+            $ctrlGaulois->showListSpe();
+
+            break;
+        case 'allPerso':
+            $ctrlGaulois->showAllGaulois();
 
             break;
     }
